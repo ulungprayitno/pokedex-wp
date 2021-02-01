@@ -1,6 +1,6 @@
-import { Box, Image, Text, Grid, Tabs, TabList, Tab, TabPanel, TabPanels, Stack, Skeleton, Select } from "@chakra-ui/react";
+import { Box, Text, Grid, Skeleton, Select } from "@chakra-ui/react";
 import { useLazyFetch } from '../../hooks/use-lazy-fetch';
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Content from "../../components/content";
 
 const Detail = (props) => {
@@ -9,6 +9,7 @@ const Detail = (props) => {
     useEffect(() => {
         getDetailByName(props.match.params.name)
         fetchData({compare : true});
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
     if(loading || !details || !data){
@@ -40,7 +41,7 @@ const Detail = (props) => {
 
             <Grid templateColumns="repeat(2, 1fr)" gap={6}>
                 <Content {...details} />
-                
+
                 { compare && (
                     <Content {...compare} />
                 )}
